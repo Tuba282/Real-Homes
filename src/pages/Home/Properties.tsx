@@ -1,7 +1,6 @@
 import { useState, type FC, } from "react";
 import { FaBed, FaBath } from "react-icons/fa";
 import { MdOutlineSquareFoot, MdCameraAlt } from "react-icons/md";
-import { ImageGroup, Image } from 'react-fullscreen-image'
 
 interface Property {
     id: number;
@@ -156,7 +155,7 @@ const Properties: FC = () => {
             <div className="max-w-7xl mx-auto">
                 {/* Header */}
                 <div className="text-center mb-10">
-                    <p className="text-blue-600 font-medium">Recent</p>
+                    <p className="text-[var(--blue)] font-medium">Recent</p>
                     <h2 className="text-3xl font-bold">Properties</h2>
                     <p className="text-gray-500">Check out some of our latest properties.</p>
                 </div>
@@ -172,29 +171,17 @@ const Properties: FC = () => {
                                     <img src={property.image} alt={property.title} className="w-full h-60 object-cover" />
                                     {showImage && (
                                         <div className="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50">
-                                            {/* <img
+                                            <img
                                                 src={property.image}
                                                 alt={property.title}
-                                                className="max-w-full max-h-full object-contain"
+                                                className="max-w-full max-h-full object-contain transition-transform duration-300 hover:scale-105 cursor-pointer"
                                             />
                                             <button
                                                 className="absolute top-4 right-4 text-white text-3xl font-bold"
                                                 onClick={() => setShowImage(false)}
                                             >
                                                 ✖
-                                            </button> */}
-                                            <ImageGroup>
-                                                <Image
-                                                    src={property.image}
-                                                    alt={property.title}
-                                                    style={{
-                                                        width: '100%',
-                                                        height: '240px',
-                                                        objectFit: 'cover',
-                                                        cursor: 'pointer',
-                                                    }}
-                                                />
-                                            </ImageGroup>
+                                            </button>
                                         </div>
                                     )}
 
@@ -219,7 +206,7 @@ const Properties: FC = () => {
                                     <p className="">For Sale</p>
                                     <div className="flex justify-between items-center">
                                         <p className="text-[var(--blue)] text-xl">{property.price}</p>
-                                        <div className="flex items-center justify-between text-sm text-gray-600 mt-3">
+                                        <div className="flex items-center gap-3 justify-between text-sm text-gray-600 mt-3">
                                             <div className="flex items-center gap-1"><FaBed /> {property.bedrooms}</div>
                                             <div className="flex items-center gap-1"><FaBath /> {property.bathrooms}</div>
                                             <div className="flex items-center gap-1"><MdOutlineSquareFoot /> {property.area} sq ft</div>
@@ -237,25 +224,45 @@ const Properties: FC = () => {
                                 {/* Image */}
                                 <div className="relative">
                                     <img src={property.image} alt={property.title} className="w-full h-60 object-cover" />
+                                    {showImage && (
+                                        <div className="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50">
+                                            <img
+                                                src={property.image}
+                                                alt={property.title}
+                                                className="max-w-full max-h-full object-contain transition-transform duration-300 hover:scale-105 cursor-pointer"
+                                            />
+                                            <button
+                                                className="absolute top-4 right-4 text-white text-3xl font-bold"
+                                                onClick={() => setShowImage(false)}
+                                            >
+                                                ✖
+                                            </button>
+                                        </div>
+                                    )}
                                     {/* Tags */}
                                     <div className="absolute top-2 left-2 flex gap-2 text-xs text-white">
-                                        <span className="bg-black/30 px-2 py-1 rounded flex items-center gap-1">
+                                        <span
+                                            className="bg-black/30 px-2 py-1 rounded flex items-center gap-1 cursor-pointer"
+                                            onClick={() => setShowImage(true)}
+                                        >
                                             <MdCameraAlt /> {property.photos}
                                         </span>
                                     </div>
                                     {/* Status */}
-                                    <span className={`absolute bottom-2 left-2 text-xs font-semibold px-3 py-1 rounded ${property.status === "sale" ? "bg-blue-600 text-white" : "bg-green-600 text-white"}`}>
+                                    <span className={`absolute bottom-2 left-2 text-xs font-semibold px-3 py-1 rounded ${property.status === "sale" ? "bg-[var(--blue)] text-white" : "bg-green-600 text-white"}`}>
                                         {property.status === "sale" ? "For Sale" : "For Rent"}
                                     </span>
                                 </div>
                                 {/* Content */}
                                 <div className="p-4">
-                                    <h3 className="font-semibold text-lg">{property.title}</h3>
-                                    <p className="text-blue-600 font-bold">{property.price}</p>
-                                    <div className="flex items-center justify-between text-sm text-gray-600 mt-3">
-                                        <div className="flex items-center gap-1"><FaBed /> {property.bedrooms}</div>
-                                        <div className="flex items-center gap-1"><FaBath /> {property.bathrooms}</div>
-                                        <div className="flex items-center gap-1"><MdOutlineSquareFoot /> {property.area} sq ft</div>
+                                    <p className="">For Sale</p>
+                                    <div className="flex justify-between items-center">
+                                        <p className="text-[var(--blue)] text-xl">{property.price}</p>
+                                        <div className="flex items-center gap-3 justify-between text-sm text-gray-600 mt-3">
+                                            <div className="flex items-center gap-1"><FaBed /> {property.bedrooms}</div>
+                                            <div className="flex items-center gap-1"><FaBath /> {property.bathrooms}</div>
+                                            <div className="flex items-center gap-1"><MdOutlineSquareFoot /> {property.area} sq ft</div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -269,7 +276,7 @@ const Properties: FC = () => {
                         <button
                             key={i + 1}
                             onClick={() => setCurrentPage(i + 1)}
-                            className={`px-3 py-1 rounded ${currentPage === i + 1 ? "bg-blue-600 text-white" : "bg-white border text-gray-700 hover:bg-blue-50"}`}
+                            className={`px-3 py-1 rounded ${currentPage === i + 1 ? "bg-[var(--blue)] text-white" : "bg-white border border-gray-300 text-gray-700 hover:bg-blue-50"}`}
                         >
                             {i + 1}
                         </button>
