@@ -1,0 +1,16 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: borik;
+  src: url(./Fonts/Rubik-VariableFont_wght.ttf);
+}
+
+body,
+html {
+  font-family: borik, sans-serif !important;
+}
+
+:root {
+  --blue: #0054a6;
+  --gray: #83817f;
+}
