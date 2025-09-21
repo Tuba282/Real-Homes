@@ -5,7 +5,10 @@ import Footer from "./Components/Footer"
 const Layout = () => {
     return (
         <div className="relative">
-            <div className="w-full z-[1000] h-20 fixed"><NavBar /></div>
+            <div className="w-full z-[10] h-20 absolute top-0 left-0">
+                <NavBar />
+
+            </div>
             <Outlet />
             <Footer />
         </div >

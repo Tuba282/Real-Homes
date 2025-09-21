@@ -5,8 +5,8 @@ import Properties from "./Properties"
 const Home = () => {
   return (
     <div>
-      <Hero/>
-      <Properties/>
+      <Hero />
+      <Properties />
     </div>
   )
 }
