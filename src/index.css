@@ -14,3 +14,20 @@ html {
   --blue: #0054a6;
   --gray: #83817f;
 }
+.testimonial-swiper .swiper-button-prev,
+.testimonial-swiper .swiper-button-prev::after,
+.testimonial-swiper .swiper-button-next,
+.testimonial-swiper .swiper-button-next::after {
+  color: var(--gray) !important;
+  font-weight: bold !important;
+  font-size: 20px !important;
+}
+
+.hero-swiper .swiper-button-prev,
+.hero-swiper .swiper-button-prev::after,
+.hero-swiper .swiper-button-next,
+.hero-swiper .swiper-button-next::after {
+  color: white !important;
+  font-weight: bold !important;
+  font-size: 20px !important;
+}

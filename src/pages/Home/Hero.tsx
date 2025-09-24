@@ -45,7 +45,7 @@ const Hero = () => {
         }}
         effect="fade"
         loop
-        className="h-full w-full"
+        className="h-full w-full hero-swiper"
       >
         {slides.map((slide) => (
           <SwiperSlide key={slide.id}>
@@ -111,8 +111,8 @@ const Hero = () => {
         ))}
 
         {/* Navigation Buttons */}
-        <div className="swiper-button-prev left-0! !bg-blue-500 !text-white/80 text-md! !w-10 !h-20 !rounded-r !flex !items-center !justify-center shadow-md hover:!bg-blue-600"></div>
-        <div className="swiper-button-next right-0! !bg-blue-500 !text-white/80 !w-10 !h-20 !rounded-l !flex !items-center !justify-center shadow-md hover:!bg-blue-600"></div>
+        <div className="swiper-button-prev left-0! !bg-blue-400 !text-white/80 text-md! !w-10 !h-10 !rounded-r !flex !items-center !justify-center shadow-md hover:!bg-blue-600"></div>
+        <div className="swiper-button-next right-0! !bg-blue-400 !text-white/80 !w-10 !h-10 !rounded-l !flex !items-center !justify-center shadow-md hover:!bg-blue-600"></div>
       </Swiper>
     </div>
   );
