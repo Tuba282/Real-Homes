@@ -4,8 +4,8 @@ import {
   RouterProvider
 } from 'react-router-dom';
 import NotFound from './pages/404.tsx';
-import Properties from './pages/Properties.tsx';
-import PropertyDetail from './pages/PropertyDetail.tsx';
+import Properties from './pages/Properties/Properties.tsx';
+import PropertyDetail from './pages/Properties/PropertyDetail.tsx';
 import Agent from './pages/Agent.tsx';
 import AgentDetail from './pages/AgentDetail.tsx';
 import Layout from './Layout.tsx';

@@ -8,12 +8,14 @@ import { PiMapPinAreaFill } from "react-icons/pi";
 import { FaBed, FaBath, FaHeart, FaExchangeAlt } from 'react-icons/fa';
 
 
-import { properties } from '../Settings/data';
-import Banner from '../Banner';
+import { properties } from '../../Settings/data';
+import Banner from '../../Banner';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import Typography from '@mui/material/Typography';
 import Tooltip from '@mui/material/Tooltip';
+import FavoriteList from './FavoriteList';
+import { useRef } from 'react';
 
 const sortOptions = ['Default', 'Low to High', 'High to Low', 'Old to New', 'New to Old'];
 
@@ -143,6 +145,9 @@ export default function PropertyList() {
     setCurrentPage(page);
   };
 
+  // ref to FavoriteList to call addToFavorites from property cards
+  const favoriteListRef = useRef<{ addToFavorites?: (id: number) => void } | null>(null);
+
   return (
     <div className="bg-gray-50 min-h-screen">
       <Banner page={'Property'} url={'https://sample.realhomes.io/modern03/wp-content/uploads/sites/4/2020/06/spacejoy-RqO6kwm4tZY-unsplash-1.jpg'} />
@@ -150,7 +155,7 @@ export default function PropertyList() {
 
         {/* Map + Filters */}
         <div className=" shadow-md rounded-lg p-6 absolute top-3 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white w-full max-w-7xl z-10">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-4 ">
             {/* Location Menu */}
             <Tooltip title="Select Location">
               <button
@@ -246,7 +251,7 @@ export default function PropertyList() {
 
         </div>
         {/* Map Placeholder */}
-        <div className="w-full h-84 bg-amber-500">
+        <div className="w-full h-84  p-2">
           {showCity ? (
             <CityMap city={showCity} />
           ) : (
@@ -257,9 +262,9 @@ export default function PropertyList() {
         </div>
 
         {/* Sorting + Grid */}
-        <div className="w-full max-w-7xl mx-auto mt-20 flex flex-col lg:flex-row gap-8">
+        <div className="w-full max-w-7xl mx-auto mt-20 flex flex-col xl:flex-row justify-center items-center gap-8">
           {/* Left: Property Grid */}
-          <div className="flex-1  w-full lg:max-w-4xl">
+          <div className="flex-1  w-full lg:max-w-4xl  p-2">
             <div className="flex justify-between items-center mb-4">
               <h2 className="text-xl font-semibold text-gray-700">All Properties</h2>
               <select
@@ -273,22 +278,25 @@ export default function PropertyList() {
               </select>
             </div>
 
-            <div className="w-full grid gap-5 lg:gap-2">
+            <div className="w-full flex flex-wrap md:grid gap-5 lg:gap-2 p-3 justify-center items-center">
               {currentProperties.map((prop) => (
-                <div key={prop.id} className="w-full lg:w-auto bg-white lg:h-[200px] grid lg:flex justify-center! items-center! shadow rounded overflow-hidden">
+                <div key={prop.id} className=" bg-white lg:h-[200px] grid md:flex justify-center! items-center! shadow rounded overflow-hidden">
                   {/* Left: Image Section */}
                   <div className="relative ">
                     <img
                       src={prop.image}
                       alt={prop.title}
-                      className="lg:w-[250px] w-full h-48 lg:h-[200px] object-cover"
+                      className="md:w-[250px] w-full h-48 md:h-[200px] object-cover"
                     />
 
 
                     {/* Icons */}
                     <div className="absolute bottom-2 right-2 flex gap-2">
-                      <button className=" p-1 rounded-full hover:text-red-500">
-                        <FaHeart size={20} className='text-white' />
+                      <button
+                        className="p-1 rounded-full"
+                        onClick={() => favoriteListRef.current?.addToFavorites?.(prop.id)}
+                      >
+                        <FaHeart size={20} className="text-white" />
                       </button>
                       <button className=" p-1 rounded-full hover:text-blue-500">
                         <FaExchangeAlt size={20} className='text-white' />
@@ -319,7 +327,7 @@ export default function PropertyList() {
                       </span>
                     </div>
                   </div>
-                  <div className=" bg-[var(--gray)]/50 h-[80%] w-[1px] mx-auto mb-4"></div>
+                  <div className=" bg-[var(--gray)]/20 h-[80%] w-[1px] mx-auto mb-4"></div>
 
                   {/* Right: Status & Price */}
                   <div className="p-6 flex flex-col justify-between items-end  h-full">
@@ -368,7 +376,7 @@ export default function PropertyList() {
           </div>
 
           {/* Right: Sidebar */}
-          <aside className="w-full hidden lg:block md:w-64">
+          <aside className="w-full hidden xl:block md:w-64">
             <h3 className="text-lg font-semibold text-gray-700 mb-4">Featured Properties</h3>
             <div className="space-y-4 w-full min-w-[300px]">
               {properties.slice(0, 2).map((prop) => (
@@ -384,7 +392,7 @@ export default function PropertyList() {
 
                     {/* Icons */}
                     <div className="absolute bottom-2 right-2 flex gap-2">
-                      <button className=" p-1 rounded-full hover:text-red-500">
+                      <button className=" p-1 rounded-full" onClick={() => favoriteListRef.current?.addToFavorites?.(prop.id)}>
                         <FaHeart size={20} className='text-white' />
                       </button>
                       <button className=" p-1 rounded-full hover:text-blue-500">
@@ -435,6 +443,8 @@ export default function PropertyList() {
           </aside>
         </div>
       </div>
+      {/* Favorite drawer rendered once, attached to ref */}
+      <FavoriteList ref={favoriteListRef} />
     </div>
   );
 }
