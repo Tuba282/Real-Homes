@@ -13,7 +13,7 @@ import { FaUserCircle, FaWhatsapp } from "react-icons/fa";
 import { NavLink } from 'react-router-dom';
 
 // const pages = ['Home', 'Properties', 'Property Detail', 'Agent', 'Agent Detail'];
-const pages = ['Home', 'Property', 'Blog', 'Gallery', 'Contact'];
+const pages = ['Home', 'Property', 'Agent', 'Gallery', 'Contact'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 function NavBar() {

@@ -1,6 +1,7 @@
 import Banner from "../../Banner"
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import "leaflet/dist/leaflet.css";
+import { VideoModal } from "../../Components/nurui/video-modal";
 
 import type { LatLngExpression } from 'leaflet';
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
@@ -12,18 +13,20 @@ import Typography from '@mui/material/Typography';
 import Tooltip from '@mui/material/Tooltip';
 
 import { properties } from "../../Settings/data";
-import { useParams } from 'react-router-dom';
+import { agents } from "../../Settings/data";
+import { Link, useParams } from 'react-router-dom';
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, EffectFade } from "swiper/modules";
-import { FaChevronRight, FaHeart, FaRegCalendarAlt, FaVectorSquare } from "react-icons/fa";
+import { FaBed, FaChevronRight, FaExchangeAlt, FaHeart, FaRegCalendarAlt, FaVectorSquare } from "react-icons/fa";
 import { TbBedFilled, TbCarGarage } from "react-icons/tb";
 import { FaBath } from "react-icons/fa";
-import { HiArrowsExpand } from "react-icons/hi";
+import { HiArrowsExpand, HiCheck } from "react-icons/hi";
+import { PiMapPinAreaFill } from "react-icons/pi";
+import FavoriteList from "./FavoriteList";
 
-import "swiper/css";
-import "swiper/css/navigation";
-import "swiper/css/effect-fade";
-import { MdGarage } from "react-icons/md";
+// import "swiper/css";
+// import "swiper/css/navigation";
+// import "swiper/css/effect-fade";
 
 
 const PropertyDetail = () => {
@@ -130,6 +133,12 @@ const PropertyDetail = () => {
     : property?.image
       ? [property.image]
       : [];
+
+
+  // ref to FavoriteList to call addToFavorites from property cards
+  const favoriteListRef = useRef<{ addToFavorites?: (id: number) => void } | null>(null);
+
+
   return (
     <div className="bg-gray-50 min-h-screen">
       <Banner page={'Property Detail'} />
@@ -332,7 +341,17 @@ const PropertyDetail = () => {
                   </a>
                 </p>
 
-                <FaHeart className="text-blue-300" size={20} />
+                {
+                  property && (
+                    <button
+                      onClick={() => favoriteListRef.current?.addToFavorites?.(property.id)}
+                      className="flex items-center gap-2 bg-white border border-blue-400 text-blue-400 px-4 py-2 rounded hover:bg-blue-400 hover:text-white transition"
+                    >
+                      <FaHeart />
+                      Add to Favorites
+                    </button>
+                  )
+                }
               </div>
 
               {/* Property Specs */}
@@ -391,66 +410,68 @@ const PropertyDetail = () => {
                   <span className="uppercase text-sm text-gray-500">
                     Bedroom Features:
                   </span>{" "}
-                  Main Floor Master Bedroom, Walk-In Closet
+                  <span className="text-xs">Main Floor Master Bedroom, Walk-In Closet</span>
                 </p>
                 <p className="bg-gray-100 px-2 py-1 rounded">
                   <span className="uppercase text-sm text-gray-500">
                     Dining Area:
                   </span>{" "}
-                  Breakfast Counter/Bar, Living/Dining Combo
+                  <span className="text-xs">Breakfast Counter/Bar, Living/Dining Combo</span>
                 </p>
                 <p>
                   <span className="uppercase text-sm text-gray-500">
                     Doors & Windows:
                   </span>{" "}
-                  Bay Window
+                  <span className="text-xs">Bay Window</span>
                 </p>
                 <p>
                   <span className="uppercase text-sm text-gray-500">
                     Entry Location:
                   </span>{" "}
-                  Mid Level
+                  <span className="text-xs">Mid Level</span>
                 </p>
                 <p>
                   <span className="uppercase text-sm text-gray-500">
                     Exterior Construction:
                   </span>{" "}
-                  Wood
+                  <span className="text-xs">Wood</span>
                 </p>
                 <p className="bg-gray-100 px-2 py-1 rounded">
                   <span className="uppercase text-sm text-gray-500">
                     Fireplace Fuel:
                   </span>{" "}
-                  Pellet Stove
+                  <span className="text-xs">Pellet Stove</span>
                 </p>
                 <p>
                   <span className="uppercase text-sm text-gray-500">
                     Fireplace Location:
                   </span>{" "}
-                  Living Room
+                  <span className="text-xs">Living Room</span>
                 </p>
                 <p className="bg-gray-100 px-2 py-1 rounded">
                   <span className="uppercase text-sm text-gray-500">
                     Floors:
                   </span>{" "}
-                  Raised Foundation, Vinyl Tile, Wall-to-Wall Carpet, Wood
+                  <span className="text-xs">Raised Foundation, Vinyl Tile, Wall-to-Wall Carpet, Wood</span>
                 </p>
               </div>
 
               {/* Features */}
-              <h3 className="text-lg font-semibold mb-2 text-blue-600">Features</h3>
+              <h3 className="text-2xl mb-2 text-blue-400">
+                Features
+              </h3>
               <ul className="grid grid-cols-2 md:grid-cols-3 gap-2 text-sm text-gray-700">
                 <li className="flex items-center gap-2">
-                  <span className="text-blue-500">✔</span> 2 Stories
+                  <span className="text-blue-500"><HiCheck size={20} /></span> 2 Stories
                 </li>
                 <li className="flex items-center gap-2">
-                  <span className="text-blue-500">✔</span> Home Theater
+                  <span className="text-blue-500"><HiCheck size={20} /></span> Home Theater
                 </li>
                 <li className="flex items-center gap-2">
-                  <span className="text-blue-500">✔</span> Lawn
+                  <span className="text-blue-500"><HiCheck size={20} /></span> Lawn
                 </li>
                 <li className="flex items-center gap-2">
-                  <span className="text-blue-500">✔</span> Marble Floors
+                  <span className="text-blue-500"><HiCheck size={20} /></span> Marble Floors
                 </li>
               </ul>
             </div>
@@ -458,9 +479,11 @@ const PropertyDetail = () => {
 
             {/* Floor Plan */}
             <div className="bg-white shadow rounded-lg p-6">
-              <h3 className="text-lg font-semibold mb-4">Floor Plan</h3>
+              <h3 className="text-2xl mb-2 text-blue-400">
+                Floor Plan
+              </h3>
               <img
-                src="/floorplan.jpg"
+                src="https://sample.realhomes.io/modern03/wp-content/uploads/sites/4/2017/06/floor-plan-00.jpg"
                 alt="floorplan"
                 className="rounded-lg w-full h-auto"
               />
@@ -468,116 +491,149 @@ const PropertyDetail = () => {
 
             {/* Property Video */}
             <div className="bg-white shadow rounded-lg p-6">
-              <h3 className="text-lg font-semibold mb-4">Property Video</h3>
+              <h3 className="text-2xl mb-2 text-blue-400">
+                Property Video
+              </h3>
               <div className="aspect-video w-full">
-                <iframe
-                  src="https://www.youtube.com/embed/sample"
-                  className="w-full h-full rounded-lg"
-                ></iframe>
+                <VideoModal
+                  className=""
+                  animationStyle="from-center"
+                  videoSrc="https://www.youtube.com/embed/uTIcquf4Z-s?si=Ptrr_c7QijPE1tRc"
+                  thumbnailSrc="https://sample.realhomes.io/modern03/wp-content/uploads/sites/4/2020/06/House-Design-1240x720.jpg"
+                  thumbnailAlt="Hero Video"
+                />
               </div>
             </div>
 
             {/* Map */}
             <div className="bg-white shadow rounded-lg p-6">
-              <h3 className="text-lg font-semibold mb-4">Property on Map</h3>
+              <h3 className="text-2xl mb-2 text-blue-400 font-[borik]">Property on Map</h3>
               <div className="w-full h-64 bg-blue-100 rounded-lg">
-                [Map Placeholder]
+                {showCity ? (
+                  <CityMap city={showCity} />
+                ) : (
+                  <div className="w-full h-full bg-blue-100 rounded-b flex items-center justify-center text-blue-600 font-semibold">
+                    [Map View Placeholder]
+                  </div>
+                )}
               </div>
             </div>
 
-            {/* Mortgage Calculator */}
-            <div className="bg-white shadow rounded-lg p-6">
-              <h3 className="text-lg font-semibold mb-4">Mortgage Calculator</h3>
-              <form className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <input
-                  type="number"
-                  placeholder="Home Price"
-                  className="border p-2 rounded"
-                />
-                <input
-                  type="number"
-                  placeholder="Down Payment"
-                  className="border p-2 rounded"
-                />
-                <input
-                  type="number"
-                  placeholder="Interest %"
-                  className="border p-2 rounded"
-                />
-                <select className="border p-2 rounded">
-                  <option>30 Years Fixed</option>
-                  <option>15 Years Fixed</option>
-                </select>
-              </form>
-            </div>
           </div>
 
           {/* RIGHT SIDEBAR */}
           <aside className="w-full xl:w-96 space-y-6">
             {/* Agent Card */}
-            <div className="bg-white shadow rounded-lg p-6">
-              <div className="flex items-center gap-4 mb-4">
-                <img
-                  src="/agent1.jpg"
-                  alt="Agent"
-                  className="w-16 h-16 rounded-full object-cover"
-                />
-                <div>
-                  <h4 className="font-semibold text-gray-800">Agent Melissa William</h4>
-                  <p className="text-sm text-gray-500">+1 234-456-7892</p>
-                </div>
-              </div>
-              <button className="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700">
-                View My Listings
-              </button>
-            </div>
+            {
+              agents.slice(0, 3).map((agent) => (
+                <div className="min-h-[500px] mb-15 relative flex flex-col justify-end" key={agent.role}>
+                  <img
+                    src={agent.image}
+                    alt={agent.name}
+                    className="absolute -top-12 left-1/3 w-27 h-27 object-cover mx-auto mt-5 rounded shadow"
+                  />
 
-            {/* Another Agent */}
-            <div className="bg-white shadow rounded-lg p-6">
-              <div className="flex items-center gap-4 mb-4">
-                <img
-                  src="/agent2.jpg"
-                  alt="Agent"
-                  className="w-16 h-16 rounded-full object-cover"
-                />
-                <div>
-                  <h4 className="font-semibold text-gray-800">Agent John David</h4>
-                  <p className="text-sm text-gray-500">+1 234-567-8989</p>
+                  <div
+                    key={agent.role}
+                    className="  rounded overflow-hidden shadow-md hover:shadow-xl transition"
+                  >
+                    {/* Agent Image */}
+
+                    {/* Agent Details */}
+                    <div className="bg-white p-5 pt-20 text-center">
+                      <h3 className="text-lg font-semibold text-gray-900">{agent.name}</h3>
+                      <p className="text-sm text-gray-500 my-1"><span className="text-md font-semibold">Office :</span> {agent.phone}</p>
+                      <p className="text-sm text-gray-500 my-1"><span className="text-md font-semibold">Email :</span> {agent.email}</p>
+                      <p className="text-ms text-gray-500 my-1"><span className="text-md font-semibold"> Fax: </span> 1-333-444-5555</p>
+                      <p className="text-sm text-gray-500 my-1"><span className="text-md font-semibold">Whatsapp :</span> 1-222-333-4422</p>
+                      <p className="text-ms text-gray-500 my-1"><span className="text-md font-semibold">Property Count :</span> {agent.propertyCount}</p>
+                      <p className="text-gray-500 text-sm my-1"><span className="text-md font-semibold">Role :</span> {agent.role}</p>
+
+                      <h3 className="text-xl mt-5 mb-2 text-left text-blue-400">Add Message!</h3>
+                      <textarea name="" id="" className="mb-5 w-full bg-blue-50 border-0 outline-0 h-25"></textarea>
+                      <a className="text-white p-2 sm:px-4 sm:py-3 bg-[var(--blue)]/70 rounded hover:shadow-2xl shadow-amber-50">Send Message</a>
+
+                    </div>
+
+                  </div>
                 </div>
-              </div>
-              <button className="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700">
-                View My Listings
-              </button>
-            </div>
+              ))
+            }
 
             {/* Featured Properties */}
-            <div className="bg-white shadow rounded-lg p-6">
-              <h3 className="text-lg font-semibold mb-4">Featured Properties</h3>
-              <div className="space-y-4">
-                <div className="border rounded overflow-hidden">
-                  <img
-                    src="/villa1.jpg"
-                    alt="villa"
-                    className="h-24 w-full object-cover"
-                  />
-                  <div className="p-2">
-                    <h4 className="font-semibold">Villa on Hollywood Boulevard</h4>
-                    <p className="text-sm text-gray-600">$740,000</p>
+            <aside className="w-full xl:w-96 space-y-6 hidden xl:block">
+              <h3 className="text-lg font-semibold text-gray-700 mb-4">Featured Properties</h3>
+              <div className="space-y-4 w-full min-w-[300px]">
+                {properties.slice(0, 2).map((prop) => (
+                  <div key={prop.id} className="w-full grid justify-center! items-center! shadow rounded overflow-hidden">
+                    {/* Left: Image Section */}
+                    <div className="relative ">
+                      <div className="group">
+                        <img
+                          src={prop.image}
+                          alt={prop.title}
+                          className=" w-full h-48 xl:w-96 object-cover"
+                        />
+                        <div className="absolute inset-0 bg-[var(--blue)]/40 bg-opacity-0 group-hover:bg-opacity-30 transition duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100">
+                          <Link to={`/property/${prop.id}`} className="bg-white text-[var(--blue)] px-4 py-2 rounded ">
+                            View Details
+                          </Link>
+                        </div>
+                      </div>
+
+
+
+                      {/* Icons */}
+                      <div className="absolute bottom-2 right-2 flex gap-2">
+                        <button className=" p-1 rounded-full" onClick={() => favoriteListRef.current?.addToFavorites?.(prop.id)}>
+                          <FaHeart size={20} className='text-white' />
+                        </button>
+                        <button className=" p-1 rounded-full hover:text-blue-500">
+                          <FaExchangeAlt size={20} className='text-white' />
+                        </button>
+                      </div>
+                    </div>
+
+                    {/* Middle: Property Info */}
+                    <div className="flex-1 grid p-6  h-full">
+                      <h3 className="text-xl font-bold text-gray-800">{prop.title}</h3>
+                      <p className="text-sm text-gray-500 mt-1">
+                        Enchanting {prop.beds} bedroom, {prop.baths} bath...
+                      </p>
+
+                      {/* Specs */}
+                      <div className="flex gap-6 mt-3 text-gray-600 text-sm">
+                        <span className="flex flex-col justify-center items-start text-xs! gap-1">
+                          <FaBed size={25} className='text-gray-500' /> {prop.beds}
+                          &nbsp; BedRoom
+                        </span>
+                        <span className="flex flex-col justify-center items-start text-xs! gap-1">
+                          <FaBath size={25} className='text-gray-500' /> {prop.baths}
+                          &nbsp; Bathroom
+                        </span>
+                        <span className="flex flex-col justify-center items-start text-xs! gap-1">
+                          <PiMapPinAreaFill size={25} className='text-gray-500' /> sq ft
+                          &nbsp; Area
+                        </span>
+                      </div>
+                    </div>
+
+                    {/* Right: Status & Price */}
+                    <div className="p-6 flex flex-col justify-between items-start gap-2.5  h-full">
+                      <div>
+                        <p className="text-sm text-gray-600">{prop.status}</p>
+                        <p className="text-xl font-semibold text-[var(--blue)]">
+                          ${prop.price.toLocaleString()}
+                        </p>
+                      </div>
+                      <p className="grid text-md text-gray-500">
+                        By <span className=" text-black">Melissa William, John David</span>
+                      </p>
+                    </div>
                   </div>
-                </div>
-                <div className="border rounded overflow-hidden">
-                  <img
-                    src="/villa2.jpg"
-                    alt="villa"
-                    className="h-24 w-full object-cover"
-                  />
-                  <div className="p-2">
-                    <h4 className="font-semibold">Villa on Grand Avenue</h4>
-                    <p className="text-sm text-gray-600">$4,750 Monthly</p>
-                  </div>
-                </div>
+                ))}
               </div>
-            </div>
+            </aside>
           </aside>
         </div>
 
@@ -588,7 +644,8 @@ const PropertyDetail = () => {
 
 
 
-
+        {/* Favorite drawer rendered once, attached to ref */}
+        <FavoriteList ref={favoriteListRef} />
       </div>
     </div>
   )
