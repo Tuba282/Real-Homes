@@ -10,7 +10,7 @@ import Testimonial from "./Testimonial"
 const Home = () => {
   return (
     <div>
-      <Hero />
+      <Hero/>
       <Properties />
       <InquirySection />
       <ImageSection />
