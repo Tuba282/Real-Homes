@@ -1,4 +1,4 @@
-import React from 'react';
+
 
 const partners = [
     { name: 'Adobe Homes', logo: 'https://sample.realhomes.io/modern03/wp-content/uploads/sites/4/2017/06/one.png' },

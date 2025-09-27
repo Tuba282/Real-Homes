@@ -88,7 +88,7 @@ export function VideoModal({
           className="w-full h-full rounded border-0 shadow-lg transition-all duration-200 ease-out group-hover:brightness-[0.8]"
           height={0}
           width={0}
-          unoptimized
+          // unoptimized
         />
         <div className="absolute inset-0 flex scale-[0.9] items-center justify-center rounded-2xl transition-all duration-200 ease-out group-hover:scale-100">
           <div className="flex size-28 items-center justify-center rounded-full bg-[var(--primary-color-2)] backdrop-blur-md">

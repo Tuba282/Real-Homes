@@ -1,8 +1,8 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, EffectFade } from 'swiper/modules';
-import 'swiper/css';
-import 'swiper/css/navigation';
-import 'swiper/css/effect-fade';
+// import 'swiper/css';
+// import 'swiper/css/navigation';
+// import 'swiper/css/effect-fade';
 import { FaQuoteLeft } from 'react-icons/fa';
 
 type Testimonial = {
