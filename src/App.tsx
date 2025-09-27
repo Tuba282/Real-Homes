@@ -10,6 +10,8 @@ import Agent from './pages/Agent.tsx';
 import AgentDetail from './pages/AgentDetail.tsx';
 import Layout from './Layout.tsx';
 import Home from './pages/Home/Home.tsx';
+import Gallery from './pages/Gallery.tsx';
+import Contact from './pages/Contact.tsx';
 
 const router = createBrowserRouter([
   {
@@ -17,6 +19,8 @@ const router = createBrowserRouter([
     children: [
       { index: true, element: <Home /> },
       { path: '/home', element: <Home /> },
+      { path: '/gallery', element: <Gallery /> },
+      { path: '/contact', element: <Contact /> },
       { path: '/property', element: <Properties /> },
       { path: '/property/:id', element: <PropertyDetail /> },
       { path: '/agent', element: <Agent /> },
