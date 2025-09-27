@@ -296,10 +296,10 @@ const Agent = () => {
 
 
 
-      <div className="max-w-7xl  mx-auto grid lg:grid-cols-3 gap-8 lg:mt-16 md:mt-10 mt-5 lg:mb-15 md:mb-10 mb-5  lg:p-3">
+      <div className="max-w-7xl  mx-auto grid lg:grid-cols-3 gap-8 lg:mt-16 md:mt-10 mt-5  lg:p-3">
 
         {/* Blog Posts*/}
-        <div className="lg:col-span-2 space-y-8 px-2  " data-aos="fade-up" data-aos-duration="1050">
+        <div className="lg:col-span-2 space-y-8 px-2  ">
 
           <div className="">
             <div className="max-w-5xl mx-auto grid grid-cols-1 gap-6  p-1">
