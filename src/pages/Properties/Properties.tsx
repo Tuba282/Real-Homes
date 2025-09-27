@@ -16,6 +16,7 @@ import Typography from '@mui/material/Typography';
 import Tooltip from '@mui/material/Tooltip';
 import FavoriteList from './FavoriteList';
 import { useRef } from 'react';
+import { Link } from 'react-router-dom';
 
 const sortOptions = ['Default', 'Low to High', 'High to Low', 'Old to New', 'New to Old'];
 
@@ -283,11 +284,18 @@ export default function PropertyList() {
                 <div key={prop.id} className=" bg-white lg:h-[200px] grid md:flex justify-center! items-center! shadow rounded overflow-hidden">
                   {/* Left: Image Section */}
                   <div className="relative ">
-                    <img
-                      src={prop.image}
-                      alt={prop.title}
-                      className="md:w-[250px] w-full h-48 md:h-[200px] object-cover"
-                    />
+                    <div className="group">
+                      <img
+                        src={prop.image}
+                        alt={prop.title}
+                        className="md:w-[250px] w-full h-48 md:h-[200px] object-cover"
+                      />
+                      <div className="absolute inset-0 bg-[var(--blue)]/40 bg-opacity-0 group-hover:bg-opacity-30 transition duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100">
+                        <Link to={`/agent/${prop.id}`} className="bg-white text-[var(--blue)] px-4 py-2 rounded ">
+                          View Details
+                        </Link>
+                      </div>
+                    </div>
 
 
                     {/* Icons */}
@@ -383,11 +391,19 @@ export default function PropertyList() {
                 <div key={prop.id} className="w-full grid justify-center! items-center! shadow rounded overflow-hidden">
                   {/* Left: Image Section */}
                   <div className="relative ">
-                    <img
-                      src={prop.image}
-                      alt={prop.title}
-                      className=" w-full h-48 lg:h-[200px] object-cover"
-                    />
+                    <div className="group">
+                      <img
+                        src={prop.image}
+                        alt={prop.title}
+                        className=" w-full h-48 lg:h-[200px] object-cover"
+                      />
+                      <div className="absolute inset-0 bg-[var(--blue)]/40 bg-opacity-0 group-hover:bg-opacity-30 transition duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100">
+                        <Link to={`/agent/${prop.id}`} className="bg-white text-[var(--blue)] px-4 py-2 rounded ">
+                          View Details
+                        </Link>
+                      </div>
+                    </div>
+
 
 
                     {/* Icons */}

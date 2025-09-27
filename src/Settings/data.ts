@@ -4,6 +4,7 @@ type Property = {
   price: number;
   date: string;
   image: string;
+  slidesImages?: string[];
   status: "For Sale" | "For Rent";
   type: "Apartment" | "Condo" | "Villa" | "Single Family";
   beds: number;
@@ -20,6 +21,14 @@ export const properties: Property[] = [
       "https://sample.realhomes.io/modern03/wp-content/uploads/sites/4/2021/11/Property-1-488x326.jpg",
     status: "For Sale",
     type: "Single Family",
+    slidesImages: [
+      "https://sample.realhomes.io/modern03/wp-content/uploads/sites/4/2017/06/bathroom-00-1240x720.jpg",
+      "https://sample.realhomes.io/modern03/wp-content/uploads/sites/4/2017/06/bedroom-04-1240x720.jpg",
+      "https://sample.realhomes.io/modern03/wp-content/uploads/sites/4/2020/06/House-Design-1240x720.jpg",
+      "https://sample.realhomes.io/modern03/wp-content/uploads/sites/4/2017/06/house-02-1240x720.jpg",
+      "https://sample.realhomes.io/modern03/wp-content/uploads/sites/4/2017/06/bedroom-02-1240x720.jpg",
+      "https://sample.realhomes.io/modern03/wp-content/uploads/sites/4/2017/06/bathroom-02-1240x720.jpg",
+    ],
     beds: 3,
     baths: 3,
     area: 4300,
@@ -32,6 +41,14 @@ export const properties: Property[] = [
     image:
       "https://sample.realhomes.io/modern03/wp-content/uploads/sites/4/2020/06/Villa-in-Coral-Gables-488x326.jpg",
     status: "For Sale",
+    slidesImages: [
+      "https://sample.realhomes.io/modern03/wp-content/uploads/sites/4/2017/06/interior-00-1240x720.jpg",
+      "https://sample.realhomes.io/modern03/wp-content/uploads/sites/4/2017/06/interior-02-1240x720.jpg",
+      "https://sample.realhomes.io/modern03/wp-content/uploads/sites/4/2017/06/exterior-05-1240x720.jpg",
+      "https://sample.realhomes.io/modern03/wp-content/uploads/sites/4/2017/06/living-00-1240x720.jpg",
+      "https://sample.realhomes.io/modern03/wp-content/uploads/sites/4/2017/06/bedroom-02-1240x720.jpg",
+      "https://sample.realhomes.io/modern03/wp-content/uploads/sites/4/2017/06/bathroom-02-1240x720.jpg",
+    ],
     type: "Villa",
     beds: 4,
     baths: 4,
@@ -46,6 +63,14 @@ export const properties: Property[] = [
       "https://sample.realhomes.io/modern03/wp-content/uploads/sites/4/2020/06/zac-gudakov-0qir5hBOj18-unsplash-488x326.jpg",
     status: "For Sale",
     type: "Single Family",
+    slidesImages: [
+      "https://sample.realhomes.io/modern03/wp-content/uploads/sites/4/2017/06/dining-01-1240x720.jpg",
+      "https://sample.realhomes.io/modern03/wp-content/uploads/sites/4/2017/06/living-00-1240x720.jpg",
+      "https://sample.realhomes.io/modern03/wp-content/uploads/sites/4/2017/06/bedroom-00-1240x720.jpg",
+      "https://sample.realhomes.io/modern03/wp-content/uploads/sites/4/2017/06/living-00-1240x720.jpg",
+      "https://sample.realhomes.io/modern03/wp-content/uploads/sites/4/2017/06/exterior-01-1240x720.jpg",
+      "https://sample.realhomes.io/modern03/wp-content/uploads/sites/4/2017/06/bathroom-02-1240x720.jpg",
+    ],
     beds: 3,
     baths: 4,
     area: 4530,
@@ -59,6 +84,14 @@ export const properties: Property[] = [
       "https://sample.realhomes.io/modern03/wp-content/uploads/sites/4/2020/06/Modern-House-488x326.jpg",
     status: "For Rent",
     type: "Condo",
+    slidesImages: [
+      "https://sample.realhomes.io/modern03/wp-content/uploads/sites/4/2020/06/Villa-in-Coral-Gables-1240x720.jpg",
+      "https://sample.realhomes.io/modern03/wp-content/uploads/sites/4/2017/06/dining-00-1240x720.jpg",
+      "https://sample.realhomes.io/modern03/wp-content/uploads/sites/4/2017/06/bathroom-04-1240x720.jpg",
+      "https://sample.realhomes.io/modern03/wp-content/uploads/sites/4/2017/06/living-00-1240x720.jpg",
+      "https://sample.realhomes.io/modern03/wp-content/uploads/sites/4/2017/06/exterior-01-1240x720.jpg",
+      "https://sample.realhomes.io/modern03/wp-content/uploads/sites/4/2017/06/bathroom-02-1240x720.jpg",
+    ],
     beds: 2,
     baths: 1,
     area: 950,
@@ -71,6 +104,14 @@ export const properties: Property[] = [
     image:
       "https://sample.realhomes.io/modern03/wp-content/uploads/sites/4/2020/06/House-Design-488x326.jpg",
     status: "For Rent",
+    slidesImages: [
+      "https://sample.realhomes.io/modern03/wp-content/uploads/sites/4/2017/06/bathroom-00-1240x720.jpg",
+      "https://sample.realhomes.io/modern03/wp-content/uploads/sites/4/2017/06/bedroom-04-1240x720.jpg",
+      "https://sample.realhomes.io/modern03/wp-content/uploads/sites/4/2020/06/House-Design-1240x720.jpg",
+      "https://sample.realhomes.io/modern03/wp-content/uploads/sites/4/2017/06/house-02-1240x720.jpg",
+      "https://sample.realhomes.io/modern03/wp-content/uploads/sites/4/2017/06/bedroom-02-1240x720.jpg",
+      "https://sample.realhomes.io/modern03/wp-content/uploads/sites/4/2017/06/bathroom-02-1240x720.jpg",
+    ],
     type: "Villa",
     beds: 4,
     baths: 4,
@@ -85,6 +126,14 @@ export const properties: Property[] = [
       "https://sample.realhomes.io/modern03/wp-content/uploads/sites/4/2015/07/property-06-exterior-1-488x326.jpg",
     status: "For Sale",
     type: "Apartment",
+    slidesImages: [
+      "https://sample.realhomes.io/modern03/wp-content/uploads/sites/4/2017/06/bathroom-00-1240x720.jpg",
+      "https://sample.realhomes.io/modern03/wp-content/uploads/sites/4/2017/06/bedroom-04-1240x720.jpg",
+      "https://sample.realhomes.io/modern03/wp-content/uploads/sites/4/2020/06/House-Design-1240x720.jpg",
+      "https://sample.realhomes.io/modern03/wp-content/uploads/sites/4/2017/06/house-02-1240x720.jpg",
+      "https://sample.realhomes.io/modern03/wp-content/uploads/sites/4/2017/06/bedroom-02-1240x720.jpg",
+      "https://sample.realhomes.io/modern03/wp-content/uploads/sites/4/2017/06/bathroom-02-1240x720.jpg",
+    ],
     beds: 5,
     baths: 5,
     area: 6000,
@@ -98,6 +147,14 @@ export const properties: Property[] = [
       "https://sample.realhomes.io/modern03/wp-content/uploads/sites/4/2020/06/Beautiful-House-488x326.jpg",
     status: "For Rent",
     type: "Apartment",
+    slidesImages: [
+      "https://sample.realhomes.io/modern03/wp-content/uploads/sites/4/2017/06/dining-01-1240x720.jpg",
+      "https://sample.realhomes.io/modern03/wp-content/uploads/sites/4/2017/06/living-00-1240x720.jpg",
+      "https://sample.realhomes.io/modern03/wp-content/uploads/sites/4/2017/06/bedroom-00-1240x720.jpg",
+      "https://sample.realhomes.io/modern03/wp-content/uploads/sites/4/2017/06/living-00-1240x720.jpg",
+      "https://sample.realhomes.io/modern03/wp-content/uploads/sites/4/2017/06/exterior-01-1240x720.jpg",
+      "https://sample.realhomes.io/modern03/wp-content/uploads/sites/4/2017/06/bathroom-02-1240x720.jpg",
+    ],
     beds: 2,
     baths: 2,
     area: 1200,
@@ -110,6 +167,14 @@ export const properties: Property[] = [
     image:
       "https://sample.realhomes.io/modern03/wp-content/uploads/sites/4/2020/06/Apartment-488x326.jpg",
     status: "For Sale",
+    slidesImages: [
+      "https://sample.realhomes.io/modern03/wp-content/uploads/sites/4/2020/06/Villa-in-Coral-Gables-1240x720.jpg",
+      "https://sample.realhomes.io/modern03/wp-content/uploads/sites/4/2017/06/dining-00-1240x720.jpg",
+      "https://sample.realhomes.io/modern03/wp-content/uploads/sites/4/2017/06/bathroom-04-1240x720.jpg",
+      "https://sample.realhomes.io/modern03/wp-content/uploads/sites/4/2017/06/living-00-1240x720.jpg",
+      "https://sample.realhomes.io/modern03/wp-content/uploads/sites/4/2017/06/exterior-01-1240x720.jpg",
+      "https://sample.realhomes.io/modern03/wp-content/uploads/sites/4/2017/06/bathroom-02-1240x720.jpg",
+    ],
     type: "Apartment",
     beds: 6,
     baths: 5,
@@ -123,6 +188,14 @@ export const properties: Property[] = [
     image:
       "https://sample.realhomes.io/modern03/wp-content/uploads/sites/4/2020/06/Apartments-488x326.jpg",
     status: "For Rent",
+    slidesImages: [
+      "https://sample.realhomes.io/modern03/wp-content/uploads/sites/4/2017/06/bathroom-00-1240x720.jpg",
+      "https://sample.realhomes.io/modern03/wp-content/uploads/sites/4/2017/06/bedroom-04-1240x720.jpg",
+      "https://sample.realhomes.io/modern03/wp-content/uploads/sites/4/2020/06/House-Design-1240x720.jpg",
+      "https://sample.realhomes.io/modern03/wp-content/uploads/sites/4/2017/06/house-02-1240x720.jpg",
+      "https://sample.realhomes.io/modern03/wp-content/uploads/sites/4/2017/06/bedroom-02-1240x720.jpg",
+      "https://sample.realhomes.io/modern03/wp-content/uploads/sites/4/2017/06/bathroom-02-1240x720.jpg",
+    ],
     type: "Single Family",
     beds: 2,
     baths: 1,
@@ -136,6 +209,14 @@ export const properties: Property[] = [
     image:
       "https://sample.realhomes.io/modern03/wp-content/uploads/sites/4/2017/06/exterior-03-488x326.jpg",
     status: "For Rent",
+    slidesImages: [
+      "https://sample.realhomes.io/modern03/wp-content/uploads/sites/4/2017/06/bathroom-00-1240x720.jpg",
+      "https://sample.realhomes.io/modern03/wp-content/uploads/sites/4/2017/06/bedroom-04-1240x720.jpg",
+      "https://sample.realhomes.io/modern03/wp-content/uploads/sites/4/2020/06/House-Design-1240x720.jpg",
+      "https://sample.realhomes.io/modern03/wp-content/uploads/sites/4/2017/06/house-02-1240x720.jpg",
+      "https://sample.realhomes.io/modern03/wp-content/uploads/sites/4/2017/06/bedroom-02-1240x720.jpg",
+      "https://sample.realhomes.io/modern03/wp-content/uploads/sites/4/2017/06/bathroom-02-1240x720.jpg",
+    ],
     type: "Condo",
     beds: 0,
     baths: 2,
