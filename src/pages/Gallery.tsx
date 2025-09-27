@@ -107,6 +107,7 @@ export default function Gallery() {
                 />
                 <Marker position={coords}>
                     <Popup>{city}</Popup>
+                    <img src="/marker-icon.png" alt="" />
                 </Marker>
             </MapContainer>
         );
@@ -240,7 +241,7 @@ export default function Gallery() {
                     )}
                 </div>
             </div>
-            <div className="p-10">
+            <div className="p-2 md:p-5 lg:p-10">
 
                 <ImageList
                     className=''

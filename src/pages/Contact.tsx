@@ -113,7 +113,7 @@ export default function Contact() {
     return (
         <>
 
-            <Banner page={'Property Gallery'} />
+            <Banner page={'Contact'} />
 
             <div className="relative pb-20 bg-[#F9FAFB]">
 
