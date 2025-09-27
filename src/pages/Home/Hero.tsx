@@ -4,9 +4,6 @@ import { Navigation, EffectFade } from "swiper/modules";
 import { FaBed, FaShower } from "react-icons/fa";
 import { BiLocationPlus, BiSquare } from "react-icons/bi";
 
-import "swiper/css";
-import "swiper/css/navigation";
-import "swiper/css/effect-fade";
 import Tooltip from "@mui/material/Tooltip";
 
 const slides = [
