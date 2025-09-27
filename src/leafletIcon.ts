@@ -6,12 +6,10 @@ import L from 'leaflet'
 // This mirrors what Leaflet expects for its default icons.
 const iconRetinaUrl = '/marker-icon.png'
 const iconUrl = '/marker-icon.png'
-const shadowUrl = '/marker-shadow.png'
 
 L.Icon.Default.mergeOptions({
   iconRetinaUrl,
   iconUrl,
-  shadowUrl,
   iconSize: [25, 41],
   iconAnchor: [12, 41],
   popupAnchor: [1, -34],

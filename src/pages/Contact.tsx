@@ -316,7 +316,7 @@ export default function Contact() {
                         </div>
 
                         {/* Right Side Content */}
-                        <div className="w-full h-full  p-2 bg-[#F9FAFB]">
+                        <div className="w-full h-full  p-2 bg-[#F9FAFB] rounded">
                             {showCity ? (
                                 <CityMap city={showCity} />
                             ) : (
