@@ -151,7 +151,7 @@ export default function PropertyList() {
 
   return (
     <div className="bg-gray-50 min-h-screen">
-      <Banner page={'Property'} url={'https://sample.realhomes.io/modern03/wp-content/uploads/sites/4/2020/06/spacejoy-RqO6kwm4tZY-unsplash-1.jpg'} />
+      <Banner page={'Property'} />
       <div className="relative pb-20">
 
         {/* Map + Filters */}
@@ -291,7 +291,7 @@ export default function PropertyList() {
                         className="md:w-[250px] w-full h-48 md:h-[200px] object-cover"
                       />
                       <div className="absolute inset-0 bg-[var(--blue)]/40 bg-opacity-0 group-hover:bg-opacity-30 transition duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100">
-                        <Link to={`/agent/${prop.id}`} className="bg-white text-[var(--blue)] px-4 py-2 rounded ">
+                        <Link to={`/property/${prop.id}`} className="bg-white text-[var(--blue)] px-4 py-2 rounded ">
                           View Details
                         </Link>
                       </div>
@@ -398,7 +398,7 @@ export default function PropertyList() {
                         className=" w-full h-48 lg:h-[200px] object-cover"
                       />
                       <div className="absolute inset-0 bg-[var(--blue)]/40 bg-opacity-0 group-hover:bg-opacity-30 transition duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100">
-                        <Link to={`/agent/${prop.id}`} className="bg-white text-[var(--blue)] px-4 py-2 rounded ">
+                        <Link to={`/property/${prop.id}`} className="bg-white text-[var(--blue)] px-4 py-2 rounded ">
                           View Details
                         </Link>
                       </div>

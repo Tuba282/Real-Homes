@@ -1,39 +1,6 @@
 
 
-const agents = [
-    {
-        name: "John Smith",
-        role: "Real Estate Agent",
-        email: "robot@inspirythemes.com",
-        phone: "1-234-456-7892",
-        propertyCount: 4,
-        image: "https://sample.realhomes.io/modern03/wp-content/uploads/sites/4/2020/05/agent-male-1-1-210x210.jpg",
-    },
-    {
-        name: "Sophia Johnson",
-        role: "Luxury Specialist",
-        email: "robot@inspirythemes.com",
-        phone: "1-234-456-7892",
-        propertyCount: 3,
-        image: "https://sample.realhomes.io/modern03/wp-content/uploads/sites/4/2020/05/agent-female-7-1-210x210.jpg",
-    },
-    {
-        name: "Michael Brown",
-        role: "Commercial Expert",
-        email: "robot@inspirythemes.com",
-        phone: "1-234-456-7892",
-        propertyCount: 5,
-        image: "https://sample.realhomes.io/modern03/wp-content/uploads/sites/4/2020/05/agent-male-2-210x210.jpg",
-    },
-    {
-        name: "Emma Davis",
-        role: "Villa Consultant",
-        email: "robot@inspirythemes.com",
-        phone: "1-234-456-7892",
-        propertyCount: 8,
-        image: "https://sample.realhomes.io/modern03/wp-content/uploads/sites/4/2020/05/agent-female-6-210x210.jpg",
-    },
-];
+import { agents } from "../../Settings/data";
 
 export default function AgentsSection() {
     return (
